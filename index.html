@@ -94,6 +94,13 @@
             outline: none;
         }
 
+        /* Formulario oculto inicialmente */
+        .contact-form {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -104,39 +111,101 @@
     <div class="container">
         <div class="product" id="product1">
             <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
-                <!-- Imagen local desde la carpeta 'images' -->
                 <img src="images/silla_tripp_trapp.jpg" alt="Silla Tripp Trapp® - Haya">
             </a>
             <h3><a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html">Silla Tripp Trapp® - Haya</a></h3>
             <p class="price">259€</p>
-            <button class="button" onclick="eliminarProducto('product1')">Comprado</button>
+            <button class="button" onclick="mostrarFormulario('product1', 'Silla Tripp Trapp® - Haya')">Comprado</button>
+            <div id="form-product1" class="contact-form">
+                <h3>Formulario para "Silla Tripp Trapp® - Haya"</h3>
+                <form id="contactForm1">
+                    <input type="text" id="name1" placeholder="Tu nombre" required><br>
+                    <input type="email" id="email1" placeholder="Tu correo" required><br>
+                    <textarea id="message1" placeholder="Tu mensaje" required></textarea><br>
+                    <button type="submit" class="button">Enviar Correo</button>
+                </form>
+            </div>
         </div>
 
         <div class="product" id="product2">
             <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
-                <!-- Imagen local desde la carpeta 'images' -->
                 <img src="images/kinderkraft_neste_grow.jpg" alt="Kinderkraft Neste Grow Cuna">
             </a>
             <h3><a href="https://www.amazon.es/Kinderkraft-Neste-Grow/dp/B0C6DZYQMX?th=1">Kinderkraft Neste Grow</a></h3>
             <p class="price">139€</p>
-            <button class="button" onclick="eliminarProducto('product2')">Comprado</button>
+            <button class="button" onclick="mostrarFormulario('product2', 'Kinderkraft Neste Grow')">Comprado</button>
+            <div id="form-product2" class="contact-form">
+                <h3>Formulario para "Kinderkraft Neste Grow"</h3>
+                <form id="contactForm2">
+                    <input type="text" id="name2" placeholder="Tu nombre" required><br>
+                    <input type="email" id="email2" placeholder="Tu correo" required><br>
+                    <textarea id="message2" placeholder="Tu mensaje" required></textarea><br>
+                    <button type="submit" class="button">Enviar Correo</button>
+                </form>
+            </div>
         </div>
 
         <div class="product" id="product3">
             <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
-                <!-- Imagen local desde la carpeta 'images' -->
                 <img src="images/stokke_flexi_bath.jpg" alt="Stokke® Flexi Bath®">
             </a>
             <h3><a href="https://www.stokke.com/ESP/es-es/639612.html">Stokke® Flexi Bath®</a></h3>
             <p class="price">79€</p>
-            <button class="button" onclick="eliminarProducto('product3')">Comprado</button>
+            <button class="button" onclick="mostrarFormulario('product3', 'Stokke® Flexi Bath®')">Comprado</button>
+            <div id="form-product3" class="contact-form">
+                <h3>Formulario para "Stokke® Flexi Bath®"</h3>
+                <form id="contactForm3">
+                    <input type="text" id="name3" placeholder="Tu nombre" required><br>
+                    <input type="email" id="email3" placeholder="Tu correo" required><br>
+                    <textarea id="message3" placeholder="Tu mensaje" required></textarea><br>
+                    <button type="submit" class="button">Enviar Correo</button>
+                </form>
+            </div>
         </div>
     </div>
 
     <script>
-        function eliminarProducto(productId) {
-            var producto = document.getElementById(productId);
-            producto.style.display = 'none';
+        // Función para mostrar el formulario de contacto
+        function mostrarFormulario(productId, productName) {
+            const formId = 'form-' + productId;
+            const formElement = document.getElementById(formId);
+            formElement.style.display = 'block'; // Muestra el formulario
+
+            // Prellena el campo de mensaje con el nombre del producto
+            const messageElement = document.getElementById('message' + productId.charAt(productId.length - 1));
+            messageElement.value = 'Estoy interesado en comprar el producto: ' + productName;
+
+            // Agregar un evento para enviar el formulario
+            document.getElementById('contactForm' + productId.charAt(productId.length - 1)).addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('name' + productId.charAt(productId.length - 1)).value;
+                const email = document.getElementById('email' + productId.charAt(productId.length - 1)).value;
+                const message = document.getElementById('message' + productId.charAt(productId.length - 1)).value;
+
+                fetch('https://us-central1-TU_PROYECTO.cloudfunctions.net/sendEmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        message: message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Correo enviado con éxito!');
+                    // Ocultar el producto relacionado
+                    const productElement = document.getElementById(productId);
+                    productElement.style.display = 'none';
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Hubo un problema al enviar el correo.');
+                });
+            });
         }
     </script>
 
