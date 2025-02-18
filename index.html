@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Bebé - Alex y Laura</title>
+    <style>
+        /* Diseño base */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        h1, p {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* Contenedor principal */
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 50px 20px;
+        }
+
+        /* Tarjetas de productos */
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .product h3 {
+            font-size: 20px;
+            color: #333;
+            margin: 20px 0 10px;
+        }
+
+        .product .price {
+            font-size: 22px;
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo para el botón */
+        .button {
+            background-color: #6c4f37; /* Marrón neutro */
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #5b4531;
+        }
+
+        /* Enlaces */
+        .button:focus, .button:active {
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Productos para Bebé - Alex y Laura</h1>
+    <p>Haz clic en "Comprado" solo si realmente has adquirido el producto.</p>
+
+    <div class="container">
+        <div class="product" id="product1">
+            <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
+                <img src="https://www.stokke.com/content/dam/stokke/products/feeding/tripp-trapp/special-edition-tripp-trapp-2022.jpg" alt="Silla Tripp Trapp® - Haya">
+            </a>
+            <h3><a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html">Silla Tripp Trapp® - Haya</a></h3>
+            <p class="price">259€</p>
+            <button class="button" onclick="eliminarProducto('product1')">Comprado</button>
+        </div>
+
+        <div class="product" id="product2">
+            <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
+                <img src="https://www.stokke.com/content/dam/stokke/products/feeding/tripp-trapp/special-edition-tripp-trapp-2022.jpg" alt="Kinderkraft Neste Grow Cuna">
+            </a>
+            <h3><a href="https://www.amazon.es/Kinderkraft-Neste-Grow/dp/B0C6DZYQMX?th=1">Kinderkraft Neste Grow</a></h3>
+            <p class="price">139€</p>
+            <button class="button" onclick="eliminarProducto('product2')">Comprado</button>
+        </div>
+
+        <div class="product" id="product3">
+            <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
+                <img src="https://www.stokke.com/content/dam/stokke/products/feeding/tripp-trapp/special-edition-tripp-trapp-2022.jpg" alt="Stokke® Flexi Bath®">
+            </a>
+            <h3><a href="https://www.stokke.com/ESP/es-es/639612.html">Stokke® Flexi Bath®</a></h3>
+            <p class="price">79€</p>
+            <button class="button" onclick="eliminarProducto('product3')">Comprado</button>
+        </div>
+    </div>
+
+    <script>
+        function eliminarProducto(productId) {
+            var producto = document.getElementById(productId);
+            producto.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
