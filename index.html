@@ -101,6 +101,11 @@
             text-align: center;
         }
 
+        /* Espacio entre el formulario y el botón */
+        .contact-form form {
+            margin-top: 20px; /* Agregado para separar el formulario del botón */
+        }
+
     </style>
 </head>
 <body>
@@ -117,7 +122,6 @@
             <p class="price">259€</p>
             <button class="button" onclick="mostrarFormulario('product1', 'Silla Tripp Trapp® - Haya')">Comprado</button>
             <div id="form-product1" class="contact-form">
-                <h3>Formulario para "Silla Tripp Trapp® - Haya"</h3>
                 <form id="contactForm1">
                     <input type="text" id="name1" placeholder="Tu nombre" required><br>
                     <input type="email" id="email1" placeholder="Tu correo" required><br>
@@ -134,7 +138,6 @@
             <p class="price">139€</p>
             <button class="button" onclick="mostrarFormulario('product2', 'Kinderkraft Neste Grow')">Comprado</button>
             <div id="form-product2" class="contact-form">
-                <h3>Formulario para "Kinderkraft Neste Grow"</h3>
                 <form id="contactForm2">
                     <input type="text" id="name2" placeholder="Tu nombre" required><br>
                     <input type="email" id="email2" placeholder="Tu correo" required><br>
@@ -151,7 +154,6 @@
             <p class="price">79€</p>
             <button class="button" onclick="mostrarFormulario('product3', 'Stokke® Flexi Bath®')">Comprado</button>
             <div id="form-product3" class="contact-form">
-                <h3>Formulario para "Stokke® Flexi Bath®"</h3>
                 <form id="contactForm3">
                     <input type="text" id="name3" placeholder="Tu nombre" required><br>
                     <input type="email" id="email3" placeholder="Tu correo" required><br>
