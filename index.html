@@ -257,13 +257,6 @@
         const formElement = document.getElementById(formId);
         formElement.style.display = "block"; // Muestra el formulario
 
-        // Prellena el campo de mensaje con el nombre del producto
-        const messageElement = document.getElementById(
-          "message" + productId.charAt(productId.length - 1)
-        );
-        messageElement.value =
-          "Estoy interesado en comprar el producto: " + productName;
-
         // Agregar un evento para enviar el formulario
         document
           .getElementById(
@@ -281,19 +274,16 @@
 
             const correo = "listabebealexlaura@gmail.com";
 
-            // Enviar el correo a través de EmailJS
-            const templateParams = {
-              from_name: name,
-              from_email: correo,
-              message:
-                "He comprado el producto: " +
-                productName +
-                "correo comprador " +
-                email,
-            };
-
             emailjs
-              .send("service_2f2blkb", "template_ada8quu", templateParams)
+              .send("service_2f2blkb", "template_ada8quu", {
+                from_name: name,
+                from_email: correo,
+                message:
+                  "He comprado el producto: " +
+                  productName +
+                  "correo comprador " +
+                  email,
+              })
               .then(
                 function (response) {
                   alert("Correo enviado con éxito!");
