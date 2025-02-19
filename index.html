@@ -246,10 +246,10 @@
       src="https://cdn.emailjs.com/dist/email.min.js"
     ></script>
     <script>
+      import emailjs from "@emailjs/browser";
+
       // Inicializa EmailJS con tu user ID
-      (function () {
-        emailjs.init("noZ_7uc4q3FNCvIA9"); // Reemplaza con tu user ID de EmailJS
-      })();
+      emailjs.init("noZ_7uc4q3FNCvIA9"); // Reemplaza con tu user ID de EmailJS
 
       // Función para mostrar el formulario de contacto
       function mostrarFormulario(productId, productName) {
@@ -281,7 +281,7 @@
                 message:
                   "He comprado el producto: " +
                   productName +
-                  "correo comprador " +
+                  " correo comprador " +
                   email,
               })
               .then(
