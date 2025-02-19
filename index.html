@@ -32,9 +32,11 @@
 
       /* Contenedor principal */
       .container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(280px, 1fr)
+        ); /* Ajusta el número de productos por fila */
         gap: 30px;
         padding: 50px 20px;
       }
@@ -44,7 +46,6 @@
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-        width: 280px;
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
@@ -137,7 +138,7 @@
     <p>Haz clic en "Comprado" solo si realmente has adquirido el producto.</p>
 
     <div class="container">
-      <!-- Aquí van los productos -->
+      <!-- Producto 1 -->
       <div class="product" id="product1">
         <a
           href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
@@ -178,91 +179,92 @@
             <button type="submit" class="button">Informar compra</button>
           </form>
           <div class="loader" id="loader1" style="display: none"></div>
-          <!-- Loader -->
-        </div>
-        <div class="product" id="product2">
-            <a
-              href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
-              target="_blank"
-            >
-              <img
-                src="images/kinderkraft_neste_grow.jpg"
-                alt="Kinderkraft Neste Grow Cuna"
-              />
-            </a>
-            <h3>
-              <a
-                href="https://www.amazon.es/Kinderkraft-Neste-Grow/dp/B0C6DZYQMX?th=1"
-                >Kinderkraft Neste Grow</a
-              >
-            </h3>
-            <p class="price">139€</p>
-            <button
-              class="button"
-              onclick="mostrarFormulario('product2', 'Kinderkraft Neste Grow')"
-            >
-              Comprado
-            </button>
-            <div id="form-product2" class="contact-form">
-              <form id="contactForm2">
-                <input
-                  type="text"
-                  id="name2"
-                  placeholder="Tu nombre"
-                  required
-                /><br />
-                <input
-                  type="email"
-                  id="email2"
-                  placeholder="Tu correo"
-                  required
-                /><br />
-                <button type="submit" class="button">Informar compra</button>
-              </form>
-            </div>
-          </div>
-    
-          <div class="product" id="product3">
-            <a
-              href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
-              target="_blank"
-            >
-              <img src="images/stokke_flexi_bath.jpg" alt="Stokke® Flexi Bath®" />
-            </a>
-            <h3>
-              <a href="https://www.stokke.com/ESP/es-es/639612.html"
-                >Stokke® Flexi Bath®</a
-              >
-            </h3>
-            <p class="price">79€</p>
-            <button
-              class="button"
-              onclick="mostrarFormulario('product3', 'Stokke® Flexi Bath®')"
-            >
-              Comprado
-            </button>
-            <div id="form-product3" class="contact-form">
-              <form id="contactForm3">
-                <input
-                  type="text"
-                  id="name3"
-                  placeholder="Tu nombre"
-                  required
-                /><br />
-                <input
-                  type="email"
-                  id="email3"
-                  placeholder="Tu correo"
-                  required
-                /><br />
-                <button type="submit" class="button">Informar compra</button>
-              </form>
-            </div>
-          </div>
         </div>
       </div>
 
-      <!-- Más productos aquí -->
+      <!-- Producto 2 -->
+      <div class="product" id="product2">
+        <a
+          href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
+          target="_blank"
+        >
+          <img
+            src="images/kinderkraft_neste_grow.jpg"
+            alt="Kinderkraft Neste Grow Cuna"
+          />
+        </a>
+        <h3>
+          <a
+            href="https://www.amazon.es/Kinderkraft-Neste-Grow/dp/B0C6DZYQMX?th=1"
+            >Kinderkraft Neste Grow</a
+          >
+        </h3>
+        <p class="price">139€</p>
+        <button
+          class="button"
+          onclick="mostrarFormulario('product2', 'Kinderkraft Neste Grow')"
+        >
+          Comprado
+        </button>
+        <div id="form-product2" class="contact-form">
+          <form id="contactForm2">
+            <input
+              type="text"
+              id="name2"
+              placeholder="Tu nombre"
+              required
+            /><br />
+            <input
+              type="email"
+              id="email2"
+              placeholder="Tu correo"
+              required
+            /><br />
+            <button type="submit" class="button">Informar compra</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="product" id="product3">
+        <a
+          href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
+          target="_blank"
+        >
+          <img src="images/stokke_flexi_bath.jpg" alt="Stokke® Flexi Bath®" />
+        </a>
+        <h3>
+          <a href="https://www.stokke.com/ESP/es-es/639612.html"
+            >Stokke® Flexi Bath®</a
+          >
+        </h3>
+        <p class="price">79€</p>
+        <button
+          class="button"
+          onclick="mostrarFormulario('product3', 'Stokke® Flexi Bath®')"
+        >
+          Comprado
+        </button>
+        <div id="form-product3" class="contact-form">
+          <form id="contactForm3">
+            <input
+              type="text"
+              id="name3"
+              placeholder="Tu nombre"
+              required
+            /><br />
+            <input
+              type="email"
+              id="email3"
+              placeholder="Tu correo"
+              required
+            /><br />
+            <button type="submit" class="button">Informar compra</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Puedes agregar más productos siguiendo el mismo patrón -->
     </div>
 
     <!-- Script para EmailJS -->
@@ -273,13 +275,11 @@
     <script>
       emailjs.init("noZ_7uc4q3FNCvIA9"); // Reemplaza con tu user ID de EmailJS
 
-      // Función para mostrar el formulario de contacto
       function mostrarFormulario(productId, productName) {
         const formId = "form-" + productId;
         const formElement = document.getElementById(formId);
-        formElement.style.display = "block"; // Muestra el formulario
+        formElement.style.display = "block";
 
-        // Agregar un evento para enviar el formulario
         document
           .getElementById(
             "contactForm" + productId.charAt(productId.length - 1)
@@ -296,7 +296,6 @@
 
             const correo = "listabebealexlaura@gmail.com";
 
-            // Mostrar el loader
             document.getElementById(
               "loader" + productId.charAt(productId.length - 1)
             ).style.display = "block";
@@ -308,27 +307,20 @@
                 message:
                   "He comprado el producto: " +
                   productName +
-                  " correo comprador " +
+                  " Correo comprador: " +
                   email,
               })
               .then(
                 function (response) {
-                  // Ocultar el formulario
                   document.getElementById(formId).style.display = "none";
-
-                  // Ocultar el producto
                   document.getElementById(productId).style.display = "none";
-
-                  // Ocultar el loader
                   document.getElementById(
                     "loader" + productId.charAt(productId.length - 1)
                   ).style.display = "none";
-
                   console.log("Correo enviado con éxito!");
                 },
                 function (error) {
                   alert("Hubo un error al enviar el correo: " + error.text);
-                  // Ocultar el loader si hubo un error
                   document.getElementById(
                     "loader" + productId.charAt(productId.length - 1)
                   ).style.display = "none";
