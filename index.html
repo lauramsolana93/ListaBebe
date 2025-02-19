@@ -1,215 +1,305 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista Bebé - Alex y Laura</title>
     <style>
-        /* Diseño base */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
-        }
+      /* Diseño base */
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+        color: #333;
+      }
 
-        h1, p {
-            text-align: center;
-            margin: 20px 0;
-        }
+      h1,
+      p {
+        text-align: center;
+        margin: 20px 0;
+      }
 
-        h1 {
-            font-size: 32px;
-            color: #333;
-        }
+      h1 {
+        font-size: 32px;
+        color: #333;
+      }
 
-        p {
-            font-size: 18px;
-            color: #666;
-        }
+      p {
+        font-size: 18px;
+        color: #666;
+      }
 
-        /* Contenedor principal */
-        .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            padding: 50px 20px;
-        }
+      /* Contenedor principal */
+      .container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 50px 20px;
+      }
 
-        /* Tarjetas de productos */
-        .product {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-            width: 280px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-        }
+      /* Tarjetas de productos */
+      .product {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        width: 280px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+      }
 
-        .product:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        }
+      .product:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
 
-        .product img {
-            width: 100%;
-            height: auto;
-            border-bottom: 2px solid #ddd;
-        }
+      .product img {
+        width: 100%;
+        height: auto;
+        border-bottom: 2px solid #ddd;
+      }
 
-        .product h3 {
-            font-size: 20px;
-            color: #333;
-            margin: 20px 0 10px;
-        }
+      .product h3 {
+        font-size: 20px;
+        color: #333;
+        margin: 20px 0 10px;
+      }
 
-        .product .price {
-            font-size: 22px;
-            color: #28a745;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+      .product .price {
+        font-size: 22px;
+        color: #28a745;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
 
-        /* Estilo para el botón */
-        .button {
-            background-color: #6c4f37; /* Marrón neutro */
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
+      /* Estilo para el botón */
+      .button {
+        background-color: #6c4f37; /* Marrón neutro */
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
 
-        .button:hover {
-            background-color: #5b4531;
-        }
+      .button:hover {
+        background-color: #5b4531;
+      }
 
-        /* Enlaces */
-        .button:focus, .button:active {
-            outline: none;
-        }
+      /* Enlaces */
+      .button:focus,
+      .button:active {
+        outline: none;
+      }
 
-        /* Formulario oculto inicialmente */
-        .contact-form {
-            display: none;
-            margin-top: 20px;
-            text-align: center;
-        }
+      /* Formulario oculto inicialmente */
+      .contact-form {
+        display: none;
+        margin-top: 20px;
+        text-align: center;
+      }
 
-        /* Espacio entre el formulario y el botón */
-        .contact-form form {
-            margin-top: 20px; /* Agregado para separar el formulario del botón */
-            margin-bottom: 20px;
-        }
-
+      /* Espacio entre el formulario y el botón */
+      .contact-form form {
+        margin-top: 20px; /* Agregado para separar el formulario del botón */
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <h1>Lista de Productos para Bebé - Alex y Laura</h1>
     <p>Haz clic en "Comprado" solo si realmente has adquirido el producto.</p>
 
     <div class="container">
-        <div class="product" id="product1">
-            <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
-                <img src="images/silla_tripp_trapp.jpg" alt="Silla Tripp Trapp® - Haya">
-            </a>
-            <h3><a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html">Silla Tripp Trapp® - Haya</a></h3>
-            <p class="price">259€</p>
-            <button class="button" onclick="mostrarFormulario('product1', 'Silla Tripp Trapp® - Haya')">Comprado</button>
-            <div id="form-product1" class="contact-form">
-                <form id="contactForm1">
-                    <input type="text" id="name1" placeholder="Tu nombre" required><br>
-                    <input type="email" id="email1" placeholder="Tu correo" required><br>
-                    <button type="submit" class="button">Informar compra</button>
-                </form>
-            </div>
+      <div class="product" id="product1">
+        <a
+          href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
+          target="_blank"
+        >
+          <img
+            src="images/silla_tripp_trapp.jpg"
+            alt="Silla Tripp Trapp® - Haya"
+          />
+        </a>
+        <h3>
+          <a
+            href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
+            >Silla Tripp Trapp® - Haya</a
+          >
+        </h3>
+        <p class="price">259€</p>
+        <button
+          class="button"
+          onclick="mostrarFormulario('product1', 'Silla Tripp Trapp® - Haya')"
+        >
+          Comprado
+        </button>
+        <div id="form-product1" class="contact-form">
+          <form id="contactForm1">
+            <input
+              type="text"
+              id="name1"
+              placeholder="Tu nombre"
+              required
+            /><br />
+            <input
+              type="email"
+              id="email1"
+              placeholder="Tu correo"
+              required
+            /><br />
+            <button type="submit" class="button">Informar compra</button>
+          </form>
         </div>
+      </div>
 
-        <div class="product" id="product2">
-            <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
-                <img src="images/kinderkraft_neste_grow.jpg" alt="Kinderkraft Neste Grow Cuna">
-            </a>
-            <h3><a href="https://www.amazon.es/Kinderkraft-Neste-Grow/dp/B0C6DZYQMX?th=1">Kinderkraft Neste Grow</a></h3>
-            <p class="price">139€</p>
-            <button class="button" onclick="mostrarFormulario('product2', 'Kinderkraft Neste Grow')">Comprado</button>
-            <div id="form-product2" class="contact-form">
-                <form id="contactForm2">
-                    <input type="text" id="name2" placeholder="Tu nombre" required><br>
-                    <input type="email" id="email2" placeholder="Tu correo" required><br>
-                    <button type="submit" class="button">Informar compra</button>
-                </form>
-            </div>
+      <div class="product" id="product2">
+        <a
+          href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
+          target="_blank"
+        >
+          <img
+            src="images/kinderkraft_neste_grow.jpg"
+            alt="Kinderkraft Neste Grow Cuna"
+          />
+        </a>
+        <h3>
+          <a
+            href="https://www.amazon.es/Kinderkraft-Neste-Grow/dp/B0C6DZYQMX?th=1"
+            >Kinderkraft Neste Grow</a
+          >
+        </h3>
+        <p class="price">139€</p>
+        <button
+          class="button"
+          onclick="mostrarFormulario('product2', 'Kinderkraft Neste Grow')"
+        >
+          Comprado
+        </button>
+        <div id="form-product2" class="contact-form">
+          <form id="contactForm2">
+            <input
+              type="text"
+              id="name2"
+              placeholder="Tu nombre"
+              required
+            /><br />
+            <input
+              type="email"
+              id="email2"
+              placeholder="Tu correo"
+              required
+            /><br />
+            <button type="submit" class="button">Informar compra</button>
+          </form>
         </div>
+      </div>
 
-        <div class="product" id="product3">
-            <a href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html" target="_blank">
-                <img src="images/stokke_flexi_bath.jpg" alt="Stokke® Flexi Bath®">
-            </a>
-            <h3><a href="https://www.stokke.com/ESP/es-es/639612.html">Stokke® Flexi Bath®</a></h3>
-            <p class="price">79€</p>
-            <button class="button" onclick="mostrarFormulario('product3', 'Stokke® Flexi Bath®')">Comprado</button>
-            <div id="form-product3" class="contact-form">
-                <form id="contactForm3">
-                    <input type="text" id="name3" placeholder="Tu nombre" required><br>
-                    <input type="email" id="email3" placeholder="Tu correo" required><br>
-                    <button type="submit" class="button">Informar compra</button>
-                </form>
-            </div>
+      <div class="product" id="product3">
+        <a
+          href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
+          target="_blank"
+        >
+          <img src="images/stokke_flexi_bath.jpg" alt="Stokke® Flexi Bath®" />
+        </a>
+        <h3>
+          <a href="https://www.stokke.com/ESP/es-es/639612.html"
+            >Stokke® Flexi Bath®</a
+          >
+        </h3>
+        <p class="price">79€</p>
+        <button
+          class="button"
+          onclick="mostrarFormulario('product3', 'Stokke® Flexi Bath®')"
+        >
+          Comprado
+        </button>
+        <div id="form-product3" class="contact-form">
+          <form id="contactForm3">
+            <input
+              type="text"
+              id="name3"
+              placeholder="Tu nombre"
+              required
+            /><br />
+            <input
+              type="email"
+              id="email3"
+              placeholder="Tu correo"
+              required
+            /><br />
+            <button type="submit" class="button">Informar compra</button>
+          </form>
         </div>
+      </div>
     </div>
 
+    <!-- Script para EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.emailjs.com/dist/email.min.js"
+    ></script>
     <script>
-        // Función para mostrar el formulario de contacto
-        function mostrarFormulario(productId, productName) {
-            const formId = 'form-' + productId;
-            const formElement = document.getElementById(formId);
-            formElement.style.display = 'block'; // Muestra el formulario
+      // Inicializa EmailJS con tu user ID
+      (function () {
+        emailjs.init("listabebealexlaura"); // Reemplaza con tu user ID de EmailJS
+      })();
 
-            // Prellena el campo de mensaje con el nombre del producto
-            const messageElement = document.getElementById('message' + productId.charAt(productId.length - 1));
-            messageElement.value = 'Estoy interesado en comprar el producto: ' + productName;
+      // Función para mostrar el formulario de contacto
+      function mostrarFormulario(productId, productName) {
+        const formId = "form-" + productId;
+        const formElement = document.getElementById(formId);
+        formElement.style.display = "block"; // Muestra el formulario
 
-            // Agregar un evento para enviar el formulario
-            document.getElementById('contactForm' + productId.charAt(productId.length - 1)).addEventListener('submit', function(event) {
-                event.preventDefault();
+        // Prellena el campo de mensaje con el nombre del producto
+        const messageElement = document.getElementById(
+          "message" + productId.charAt(productId.length - 1)
+        );
+        messageElement.value =
+          "Estoy interesado en comprar el producto: " + productName;
 
-                const name = document.getElementById('name' + productId.charAt(productId.length - 1)).value;
-                const email = document.getElementById('email' + productId.charAt(productId.length - 1)).value;
-                const message = document.getElementById('message' + productId.charAt(productId.length - 1)).value;
+        // Agregar un evento para enviar el formulario
+        document
+          .getElementById(
+            "contactForm" + productId.charAt(productId.length - 1)
+          )
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
 
-                fetch('https://us-central1-TU_PROYECTO.cloudfunctions.net/sendEmail', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        message: message
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert('Correo enviado con éxito!');
-                    // Ocultar el producto relacionado
-                    const productElement = document.getElementById(productId);
-                    productElement.style.display = 'none';
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('Hubo un problema al enviar el correo.');
-                });
-            });
-        }
+            const name = document.getElementById(
+              "name" + productId.charAt(productId.length - 1)
+            ).value;
+            const email = document.getElementById(
+              "email" + productId.charAt(productId.length - 1)
+            ).value;
+
+            // Enviar el correo a través de EmailJS
+            const templateParams = {
+              from_name: name,
+              from_email: email,
+              message: "He comprado el producto: " + productName,
+            };
+
+            emailjs
+              .send("service_2f2blkb", "template_ada8quu", templateParams)
+              .then(
+                function (response) {
+                  alert("Correo enviado con éxito!");
+                  // Ocultar el formulario
+                  document.getElementById(formId).style.display = "none";
+                },
+                function (error) {
+                  alert("Hubo un error al enviar el correo: " + error.text);
+                }
+              );
+          });
+      }
     </script>
-
-</body>
+  </body>
 </html>
