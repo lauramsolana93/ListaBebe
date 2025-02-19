@@ -48,6 +48,7 @@
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
+        padding: 15px;
       }
 
       .product:hover {
@@ -105,10 +106,29 @@
         text-align: center;
       }
 
-      /* Espacio entre el formulario y el botón */
       .contact-form form {
-        margin-top: 20px; /* Agregado para separar el formulario del botón */
+        margin-top: 20px;
         margin-bottom: 20px;
+      }
+
+      /* Estilo para el loader */
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #28a745;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 2s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
     </style>
   </head>
@@ -117,6 +137,7 @@
     <p>Haz clic en "Comprado" solo si realmente has adquirido el producto.</p>
 
     <div class="container">
+      <!-- Aquí van los productos -->
       <div class="product" id="product1">
         <a
           href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
@@ -156,88 +177,12 @@
             /><br />
             <button type="submit" class="button">Informar compra</button>
           </form>
+          <div class="loader" id="loader1" style="display: none"></div>
+          <!-- Loader -->
         </div>
       </div>
 
-      <div class="product" id="product2">
-        <a
-          href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
-          target="_blank"
-        >
-          <img
-            src="images/kinderkraft_neste_grow.jpg"
-            alt="Kinderkraft Neste Grow Cuna"
-          />
-        </a>
-        <h3>
-          <a
-            href="https://www.amazon.es/Kinderkraft-Neste-Grow/dp/B0C6DZYQMX?th=1"
-            >Kinderkraft Neste Grow</a
-          >
-        </h3>
-        <p class="price">139€</p>
-        <button
-          class="button"
-          onclick="mostrarFormulario('product2', 'Kinderkraft Neste Grow')"
-        >
-          Comprado
-        </button>
-        <div id="form-product2" class="contact-form">
-          <form id="contactForm2">
-            <input
-              type="text"
-              id="name2"
-              placeholder="Tu nombre"
-              required
-            /><br />
-            <input
-              type="email"
-              id="email2"
-              placeholder="Tu correo"
-              required
-            /><br />
-            <button type="submit" class="button">Informar compra</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="product" id="product3">
-        <a
-          href="https://www.stokke.com/ESP/es-es/tronas/tripp-trapp/1001.html"
-          target="_blank"
-        >
-          <img src="images/stokke_flexi_bath.jpg" alt="Stokke® Flexi Bath®" />
-        </a>
-        <h3>
-          <a href="https://www.stokke.com/ESP/es-es/639612.html"
-            >Stokke® Flexi Bath®</a
-          >
-        </h3>
-        <p class="price">79€</p>
-        <button
-          class="button"
-          onclick="mostrarFormulario('product3', 'Stokke® Flexi Bath®')"
-        >
-          Comprado
-        </button>
-        <div id="form-product3" class="contact-form">
-          <form id="contactForm3">
-            <input
-              type="text"
-              id="name3"
-              placeholder="Tu nombre"
-              required
-            /><br />
-            <input
-              type="email"
-              id="email3"
-              placeholder="Tu correo"
-              required
-            /><br />
-            <button type="submit" class="button">Informar compra</button>
-          </form>
-        </div>
-      </div>
+      <!-- Más productos aquí -->
     </div>
 
     <!-- Script para EmailJS -->
@@ -271,6 +216,11 @@
 
             const correo = "listabebealexlaura@gmail.com";
 
+            // Mostrar el loader
+            document.getElementById(
+              "loader" + productId.charAt(productId.length - 1)
+            ).style.display = "block";
+
             emailjs
               .send("service_2f2blkb", "template_ada8quu", {
                 from_name: name,
@@ -283,21 +233,25 @@
               })
               .then(
                 function (response) {
-                  alert("Correo enviado con éxito!");
-
                   // Ocultar el formulario
                   document.getElementById(formId).style.display = "none";
 
                   // Ocultar el producto
                   document.getElementById(productId).style.display = "none";
 
+                  // Ocultar el loader
+                  document.getElementById(
+                    "loader" + productId.charAt(productId.length - 1)
+                  ).style.display = "none";
+
                   console.log("Correo enviado con éxito!");
                 },
                 function (error) {
                   alert("Hubo un error al enviar el correo: " + error.text);
-                  console.log(
-                    "Hubo un error al enviar el correo: " + error.text
-                  );
+                  // Ocultar el loader si hubo un error
+                  document.getElementById(
+                    "loader" + productId.charAt(productId.length - 1)
+                  ).style.display = "none";
                 }
               );
           });
