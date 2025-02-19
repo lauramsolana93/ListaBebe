@@ -287,8 +287,13 @@
               .then(
                 function (response) {
                   alert("Correo enviado con éxito!");
+
                   // Ocultar el formulario
                   document.getElementById(formId).style.display = "none";
+
+                  // Ocultar el producto
+                  document.getElementById(productId).style.display = "none";
+
                   console.log("Correo enviado con éxito!");
                 },
                 function (error) {
