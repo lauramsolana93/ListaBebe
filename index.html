@@ -279,11 +279,17 @@
               "email" + productId.charAt(productId.length - 1)
             ).value;
 
+            const correo = "listabebealexlaura@gmail.com";
+
             // Enviar el correo a través de EmailJS
             const templateParams = {
               from_name: name,
-              from_email: email,
-              message: "He comprado el producto: " + productName,
+              from_email: correo,
+              message:
+                "He comprado el producto: " +
+                productName +
+                "correo comprador " +
+                email,
             };
 
             emailjs
@@ -293,9 +299,13 @@
                   alert("Correo enviado con éxito!");
                   // Ocultar el formulario
                   document.getElementById(formId).style.display = "none";
+                  console.log("Correo enviado con éxito!");
                 },
                 function (error) {
                   alert("Hubo un error al enviar el correo: " + error.text);
+                  console.log(
+                    "Hubo un error al enviar el correo: " + error.text
+                  );
                 }
               );
           });
